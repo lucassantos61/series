@@ -1,0 +1,15 @@
+body{
+	overflow-x: hidden;
+}
+h2{
+	text-align: center;
+	padding:1em;
+}
+.remove{
+	display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
