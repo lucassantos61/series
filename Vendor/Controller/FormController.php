@@ -35,9 +35,9 @@ class FormController{
 			$serie->setNome($conteudo['nome']);
 			$menssagem = $this->serieDao->adiciona($serie)?"Adicionado com sucesso":"Ocorreu um erro ao adicionar";
 			$serie = Util::popula($serie,$this->serieDao->buscaPorNome($conteudo['nome']));
-			$serie->montaSerie($conteudo['nome'],$conteudo['temporadas'],$conteudo['episodios'],$this->episodioDao,$this->temporadaDao);
-		header("Location: /index.php?c=Serie&m=form&menssagem=".$menssagem);
-		return;
+			$serie->montaSerie($conteudo,$this->episodioDao,$this->temporadaDao);
+			header("Location: /index.php?c=Serie&m=form&menssagem=".$menssagem);
+			return;
 	}
 
 	public function remove(){

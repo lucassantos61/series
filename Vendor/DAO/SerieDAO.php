@@ -47,11 +47,11 @@ class SerieDAO{
 	}
 
 	public function buscaPorNome(string $nome){
-	    $query = "SELECT * FROM Serie WHERE nome = :nome";
+	    $query = "SELECT * FROM Serie WHERE nome = :nome ORDER BY id DESC";
 	    $statement = $this->con->prepare($query);
 	    $statement->bindParam(':nome',$nome);
 	    $statement->execute();
-
+					
 	    return $statement->fetch(\PDO::FETCH_ASSOC);
 	}
 }

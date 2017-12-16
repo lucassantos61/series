@@ -34,11 +34,12 @@ class Serie{
 		$this->temporadas = $temporadas;
 	}
 
-	public function montaSerie($nome,$temporadas,$qtddEpisodios,
+	public function montaSerie($conteudo,
 	 EpisodioDAO $episodioDao,TemporadaDAO $temporadaDao){
-		$this->nome = $nome;
-		
-		for($contTemp = 0;$contTemp < $temporadas;$contTemp++) {
+		$this->nome = $conteudo['nome'];
+		//print_r($this->getId());
+		//die();
+		for($contTemp = 0;$contTemp < $conteudo['temporadas'];$contTemp++) {
 			$temporada = new Temporada($this->getId());
 			$temporada->setNome($this->getNome()." temporada ".($contTemp+1));
 			$temporadaDao->adiciona($temporada);
@@ -46,7 +47,7 @@ class Serie{
 			Util::popula($temporada,$temporadaDao->buscaPorNome($temporada->getNome()));
 
 			$episodios = array();
-			for($contEpi = 0; $contEpi < $qtddEpisodios; $contEpi++){
+			for($contEpi = 0; $contEpi < $conteudo['episodios']; $contEpi++){
 				$episodio = new Episodio($temporada->getId());
 				
 				$episodio->setNome("episodio ".($contEpi+1));
