@@ -46,7 +46,7 @@ class TemporadaDAO{
 	}
 
 	public function buscaPorNome($nome){
-		$query = "SELECT * FROM Temporada WHERE nome = '{$nome}'";
+		$query = "SELECT * FROM Temporada WHERE nome = '{$nome}' ORDER BY id DESC";
 		
 		$result = $this->con->query($query);
 		return $result->fetch(\PDO::FETCH_ASSOC);
