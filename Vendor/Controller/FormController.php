@@ -31,8 +31,8 @@ class FormController{
 			header("Location: /index.php?c=Serie&m=form&menssagem=".$menssagem);
 			return;
 		}
-			$serie = new Serie();
-			$serie->setNome($conteudo['nome']);
+		$episodi = new Epiodio();
+
 			$menssagem = $this->serieDao->adiciona($serie)?"Adicionado com sucesso":"Ocorreu um erro ao adicionar";
 			$serie = Util::popula($serie,$this->serieDao->buscaPorNome($conteudo['nome']));
 			$serie->montaSerie($conteudo,$this->episodioDao,$this->temporadaDao);
@@ -43,8 +43,7 @@ class FormController{
 	public function remove(){
 		$view = new View("form","Series");
 		$serieId = ($_POST['serie'] == "") ? 0 : $_POST['serie'];
-		$serie = new Serie();
-		$serie->setId($serieId);
+		$episodi = new Epiodio();
 		if (!($this->serieDao->remove($serie) && $this->episodioDao->remove($serie)
 		&& $this->temporadaDao->remove($serie))|| $serieId == 0 ){
 			$menssagem = "Selecione uma serie para ser removida";
