@@ -18,10 +18,10 @@ class EpisodioDAO{
 		return $this->con->query($query);
 	}
 
-	public function remove(Serie $serie){
-		$query = "delete from Episodio where id = :id";
+	public function remove(Temporada $temporada){
+		$query = "DELETE FROM Episodio WHERE id = :id";
 		$statement = $this->con->prepare($query);
-		$statement->bindValue(':id',$serie->getId());
+		$statement->bindValue(':id',$temporada->getId());
 		return $statement->execute();
 	}
 
