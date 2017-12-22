@@ -3,6 +3,7 @@ namespace Vendor\DAO;
 use Vendor\Model\Episodio;
 use Vendor\Model\Temporada;
 use Vendor\Lib\Util;
+use Vendor\Model\Serie;
 
 class EpisodioDAO{
 	private $con;

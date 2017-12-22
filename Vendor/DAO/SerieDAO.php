@@ -25,7 +25,7 @@ class SerieDAO{
 		$query = "DELETE FROM Serie WHERE id = :id";
 		$statement = $this->con->prepare($query);
 		$statement->bindValue(':id',$serie->getId());
-		$statement->execute();
+		return $statement->execute();
 	}
 
 	public function lista(){

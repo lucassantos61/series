@@ -53,8 +53,8 @@ class FormController{
 		}
 		$temporada = new Temporada($this->buscaTemporada($serie));
 		if (!$this->serieDao->remove($serie)
-			&&!$this->temporadaDao->remove($temporada)
-			&&!$this->episodioDao->remove($temporada)){
+			||!$this->temporadaDao->remove($temporada)
+			||!$this->episodioDao->remove($temporada)){
 			$menssagem = "Selecione uma serie para ser removida";
 			header("Location: /index.php?c=Serie&m=form&menssagem=".$menssagem);
 			return;	

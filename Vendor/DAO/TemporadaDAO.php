@@ -21,7 +21,7 @@ class TemporadaDAO{
 				   '{$temporada->getNome()}')";
 		return $this->con->query($query);
 	}
-
+	
 	public function remove(Temporada $temporada){
 		$query = "DELETE FROM Temporada WHERE id = :id";
 		$statement = $this->con->prepare($query);
