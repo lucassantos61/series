@@ -21,11 +21,11 @@ class SerieDAO{
 		return $statement->execute();
 	}
 
-	public function remove($id){
+	public function remove(Serie $serie){
 		$query = "DELETE FROM Serie WHERE id = :id";
 		$statement = $this->con->prepare($query);
-		$statement->bindValue(':id',$id);
-		return $statement->execute();
+		$statement->bindValue(':id',$serie->getId());
+		$statement->execute();
 	}
 
 	public function lista(){
