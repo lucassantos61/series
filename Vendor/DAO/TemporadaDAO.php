@@ -21,9 +21,12 @@ class TemporadaDAO{
 				   '{$temporada->getNome()}')";
 		return $this->con->query($query);
 	}
-
+	
 	public function remove(Temporada $temporada){
-		$query = "delete from Temporada where id = {$temporada->getId()}";
+		$query = "DELETE FROM Temporada WHERE id = :id";
+		$statement = $this->con->prepare($query);
+		$statement->bindValue(':id',$temporada->getId());
+		return $statement->execute();
 	}
 
 	public function lista($id){
@@ -50,5 +53,13 @@ class TemporadaDAO{
 		
 		$result = $this->con->query($query);
 		return $result->fetch(\PDO::FETCH_ASSOC);
+	}
+
+	public function buscaPorId(Serie $serie){
+		$query = "SELECT id FROM Temporada WHERE serieId = {$serie->getId()}";
+		$result = $this->con->query($query);
+	
+
+		return 	$result->fetch(\PDO::FETCH_ASSOC);
 	}
 }
