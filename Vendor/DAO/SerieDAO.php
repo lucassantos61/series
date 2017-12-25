@@ -46,10 +46,10 @@ class SerieDAO{
 		return $series;
 	}
 
-	public function buscaPorNome(string $nome){
+	public function buscaPorNome(Serie $serie){
 	    $query = "SELECT * FROM Serie WHERE nome = :nome ORDER BY id DESC";
 	    $statement = $this->con->prepare($query);
-	    $statement->bindParam(':nome',$nome);
+	    $statement->bindParam(':nome',$serie->getNome());
 	    $statement->execute();
 					
 	    return $statement->fetch(\PDO::FETCH_ASSOC);

@@ -32,10 +32,11 @@ class FormController{
 			header("Location: /index.php?c=Serie&m=form&menssagem=".$menssagem);
 			return;
 		}
-		$episodi = new Epiodio();
+			$serie = New Serie();
+			$serie->setNome($conteudo['nome']);
 
 			$menssagem = $this->serieDao->adiciona($serie)?"Adicionado com sucesso":"Ocorreu um erro ao adicionar";
-			$serie = Util::popula($serie,$this->serieDao->buscaPorNome($conteudo['nome']));
+			$serie = Util::popula($serie,$this->serieDao->buscaPorNome($serie));
 			$serie->montaSerie($conteudo,$this->episodioDao,$this->temporadaDao);
 			header("Location: /index.php?c=Serie&m=form&menssagem=".$menssagem);
 			return;
